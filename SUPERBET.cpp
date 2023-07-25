@@ -145,16 +145,16 @@ void SUPERBET::PLAY()
     Choose_Name();
     Choose_Sum();
     Choose_Bet();
-    EGT Game(User, Casino, BET);
-	while (!Game.Joc())
+    EGT Slot(User, Casino, BET);
+	while (!Slot.Game())
     {
         system("cls");
         Sleep(100);
         Choose_Sum();
         Choose_Bet();
-		Game.Change_Bet(BET);
+		Slot.Change_Bet(BET);
         Sleep(100);
-        Game.Joc();
+        Slot.Game();
     }
 }
 

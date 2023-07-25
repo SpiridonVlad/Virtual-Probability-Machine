@@ -18,7 +18,7 @@ public:
 
 	void Display();
 
-	bool Joc();
+	bool Game();
 	
 	bool Win();
 	

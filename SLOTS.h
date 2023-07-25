@@ -76,7 +76,7 @@ public:
 
 	virtual void Display()=0;
 
-	virtual bool Joc()=0;
+	virtual bool Game()=0;
 
 	virtual bool Win()=0;
 

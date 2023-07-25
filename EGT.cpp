@@ -125,13 +125,13 @@ void EGT::Display()
 	}
 	cout << "  -----------    -----------    ----------- " << endl;
 	cout << "______________________________________________" << endl;
-	cout << "["<<User->GetOwner()<<"]"<<"            [" << User->GetBalance() << "]" << "[" << this->BET << "]        ["<<WIN<<"]";
+	cout << "["<<User->GetOwner()<<"]"<<"            [" << User->GetBalance() << "]" << "[" << this->BET << "]        ["<<this->WIN<<"]";
 	cout << endl;
 
 Sleep(500);
 }
 
-bool EGT::Joc()
+bool EGT::Game()
 {
 	Display();
 	while (User->GetBalance() > BET) 
@@ -280,12 +280,12 @@ void EGT::Double()
 			cout << "$-----------------DUBLAJ-----------------$" << endl;
 			cout << "                   [" << WIN << "]";
 			cout << endl;
-			Sleep(300);
+			Sleep(200);
 
 			while (true) {
 				if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
 					if (Option == 1) {
-						WIN = WIN * 2;
+						WIN *= 2;
 						system("cls");
 						cout <<      "$-----------------DUBLAJ-----------------$" << endl;
 						std::cout << "                  BLACK " << std::endl;
@@ -300,8 +300,9 @@ void EGT::Double()
 						std::cout << "               ----------- " << std::endl;
 						std::cout << "                  BLACK  " << std::endl;
 						cout << "$-----------------DUBLAJ-----------------$" << endl;
-						Sleep(400);
+						Sleep(500);
 						Double();
+						return;
 					}
 					else {
 						WIN = 0;
@@ -319,14 +320,14 @@ void EGT::Double()
 						std::cout << "               ----------- " << std::endl;
 						std::cout << "                         " << std::endl;
 						cout << "$------------------LOST------------------$" << endl;
-						Sleep(300);
+						Sleep(800);
 						return;
 					}
 				}
 				else
 					if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
 						if (Option == 0) {
-							WIN = WIN * 2;
+							WIN *= 2;
 							system("cls");
 							cout << "$-----------------DUBLAJ-----------------$" << endl;
 							std::cout << "                   RED " << std::endl;
@@ -341,8 +342,9 @@ void EGT::Double()
 							std::cout << "               ----------- " << std::endl;
 							std::cout << "                   RED  " << std::endl;
 							cout << "$-----------------DUBLAJ-----------------$" << endl;
-							Sleep(400);
+							Sleep(500);
 							Double();
+							return;
 						}
 						else {
 							this->WIN = 0;
@@ -360,7 +362,7 @@ void EGT::Double()
 							std::cout << "               ----------- " << std::endl;
 							std::cout << "                         " << std::endl;
 							cout << "$------------------LOST------------------$" << endl;
-							Sleep(300);
+							Sleep(800);
 							return;
 						}
 					}
@@ -389,7 +391,7 @@ void EGT::Double()
 				cout << "$-----------------DUBLAJ-----------------$" << endl;
 				cout << "                   [" << WIN << "]";
 				cout << endl;
-				Sleep(300);
+				Sleep(100);
 				while (true) {
 					if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
 						if (Option == 1) {
@@ -408,7 +410,7 @@ void EGT::Double()
 							std::cout << "               ----------- " << std::endl;
 							std::cout << "                  BLACK  " << std::endl;
 							cout << "$-----------------DUBLAJ-----------------$" << endl;
-							Sleep(400);
+							Sleep(500);
 							Double();
 						}
 						else {
@@ -427,14 +429,14 @@ void EGT::Double()
 							std::cout << "               ----------- " << std::endl;
 							std::cout << "                         " << std::endl;
 							cout << "$------------------LOST------------------$" << endl;
-							Sleep(300);
+							Sleep(800);
 							return;
 						}
 					}
 					else
 						if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
 							if (Option == 0) {
-								WIN = WIN * 2;
+								WIN *= 2;
 								system("cls");
 								cout << "$-----------------DUBLAJ-----------------$" << endl;
 								std::cout << "                   RED " << std::endl;
@@ -449,7 +451,7 @@ void EGT::Double()
 								std::cout << "               ----------- " << std::endl;
 								std::cout << "                   RED  " << std::endl;
 								cout << "$-----------------DUBLAJ-----------------$" << endl;
-								Sleep(400);
+								Sleep(500);
 								Double();
 							}
 							else {
@@ -468,12 +470,13 @@ void EGT::Double()
 								std::cout << "               ----------- " << std::endl;
 								std::cout << "                         " << std::endl;
 								cout << "$------------------LOST------------------$" << endl;
-								Sleep(300);
+								Sleep(800);
 								return;
 							}
 						}
 						else if (GetAsyncKeyState(VK_SPACE) & 0x8000){
 							User->Deposit(WIN);
+							Sleep(100);
 							return;
 						}
 				}
@@ -481,6 +484,7 @@ void EGT::Double()
 			else
 				if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
 					User->Deposit(WIN);
+					Sleep(100);
 					return;
 				}
 	}
